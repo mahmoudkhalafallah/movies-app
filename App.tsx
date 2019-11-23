@@ -1,9 +1,12 @@
-
 import React from 'react';
-import {
-  View,
-} from 'react-native';
+import { StatusBar } from 'react-native';
+import MyApp from './src';
 
-const App = () => <View></View>
+const App = () => {
+  return <>
+    <StatusBar barStyle="dark-content" backgroundColor={'#fafafc'} />
+    <MyApp />
+  </>
+}
 
 export default App;
