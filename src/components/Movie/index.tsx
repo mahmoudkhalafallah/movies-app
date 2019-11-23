@@ -26,7 +26,7 @@ width: ${({ horizontal }: any) => horizontal ? '100' : '150'};
 
 const MovieOverview = styled(StyledText)`
 font-size: 13;
-font-family: 'Oswald-Regular';
+font-family: 'Oswald-Light';
 margin-top: 5;
 `
 

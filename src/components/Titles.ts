@@ -6,8 +6,6 @@ import { StyledText } from './Text'
 export const SectionTitle = styled(StyledText)`
 font-size: ${Variables.sectionTitleFontSize};
 color: ${Variables.sectionTitleColor};
-padding-left: 20;
-padding-top: 10;
 padding-bottom: 10;
 
 `

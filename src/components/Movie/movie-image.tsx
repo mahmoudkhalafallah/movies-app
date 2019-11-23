@@ -8,10 +8,10 @@ const StyledImage = styled.Image`
 width: ${(props) => props.horizontal? '100' : '150'};
 height: ${(props) => props.horizontal? '100' : '200'};
 margin-right: ${(props) => props.horizontal? '10' : '20'};
-borderTopLeftRadius: 10;
-borderTopRightRadius: 10;
-borderBottomLeftRadius: 10;
-borderBottomRightRadius: 10;
+border-top-left-radius: 10;
+border-top-right-radius: 10;
+border-bottom-left-radius: 10;
+border-bottom-right-radius: 10;
 `
 
 export const MovieImage: React.FC<{ horizontal: string, src?: string }> = ({ horizontal, src }) => {
