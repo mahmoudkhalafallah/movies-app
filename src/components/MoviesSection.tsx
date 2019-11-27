@@ -70,7 +70,7 @@ export const MoviesSection: React.FC<{
 				horizontal={isMyMovie}
 				onEndReached={loadMoreHandler}
 				onEndReachedThreshold={2}
-				ListFooterComponent={items.length > 0 ? LoadMore : <></>}
+				ListFooterComponent={items.length > 0 && !isMyMovie ? LoadMore : <></>}
 				removeClippedSubviews={true}
 				maxToRenderPerBatch={20}
 				initialNumToRender={20}
