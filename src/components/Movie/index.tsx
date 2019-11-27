@@ -41,7 +41,7 @@ export const Movie: React.FC<any> = ({ title, poster_path, vote_average, overvie
         <MovieImage src={isMyMovie ? poster_path : `${IMAGE_URI_PREFIX}${poster_path}`} isMyMovie={isMyMovie}></MovieImage>
         <MovieDetails style={{width: isMyMovie ? 100 : 150}}>
             <MovieTitle ellipsizeMode='tail' numberOfLines={1}>{title}</MovieTitle>
-            {(vote_average != undefined) && <MovieRating rating={vote_average} showRatingValue={isMyMovie} />}
+            {(vote_average != undefined) && <MovieRating rating={vote_average} hideRatingValue={isMyMovie} />}
             {!isMyMovie && <>
                 <MovieDate>{release_date}</MovieDate>
                 <MovieOverview ellipsizeMode='tail' numberOfLines={6}>{overview}</MovieOverview>

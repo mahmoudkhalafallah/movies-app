@@ -14,7 +14,7 @@ font-size: 10;
 color: #bbb;
 `
 
-export const MovieRating: React.FC<{ rating: number, showRatingValue: boolean }> = ({ rating, showRatingValue = true }) => {
+export const MovieRating: React.FC<{ rating: number, hideRatingValue?: boolean }> = ({ rating, hideRatingValue = false }) => {
 
     const ratingPerFiveStars = (rating / 10) * 5
     return <RatingContainer>
@@ -28,6 +28,6 @@ export const MovieRating: React.FC<{ rating: number, showRatingValue: boolean }>
         allowHalves={true}
         swipeable={false}
     />
-        {(!showRatingValue) && <RatingValue>{rating}/10</RatingValue>}
+        {(!hideRatingValue) && <RatingValue>{rating}/10</RatingValue>}
     </RatingContainer>
 }
