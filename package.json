@@ -40,6 +40,8 @@
   },
   "jest": {
     "preset": "react-native",
+    "timers": "fake",
+    "testEnvironment": "jsdom",
     "moduleFileExtensions": [
       "ts",
       "tsx",
