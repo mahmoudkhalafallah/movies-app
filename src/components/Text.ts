@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native'
 
 export const StyledText = styled.Text`
-font-family: 'Oswald-SemiBold'
+	font-family: 'Oswald-SemiBold';
 `
