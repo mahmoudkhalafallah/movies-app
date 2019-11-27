@@ -1,9 +1,10 @@
 import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
-import { SafeAreaView, ScrollView, View, Text, Button } from "react-native";
+import { SafeAreaView } from "react-native";
 import Api from "./utils/Api";
 import { IMovie } from "./models/Movie";
 import { AxiosResponse } from "axios";
 import { MoviesSection } from "./components/MoviesSection";
+import { AddMovieModal } from "./screens/AddMovie/AddMovieModal"
 
 const MyApp: React.FC = () => {
     const [movies, setMovies]: [{data:IMovie[], loading: boolean}, Dispatch<SetStateAction<any>>] = useState({data: [], loading: false})
@@ -26,10 +27,13 @@ const MyApp: React.FC = () => {
         }
     }
 
-    const addMovie = () => {}
+    const addMovie = (movie: IMovie) => {
+        movie.id = myMovies.length + 1;
+        setMyMovies([...myMovies, movie])
+    }
 
     return <SafeAreaView>
-        <MoviesSection title='My Movies' items={[]} horizontal={true} height={150} addMovie={addMovie} />
+        <MoviesSection title='My Movies' items={myMovies} horizontal={true} height={150} AddMovieModal={() => <AddMovieModal onSubmit={addMovie} />} />
         <MoviesSection title='All Movies' items={movies.data} loadMoreHandler={allMoviesLoadMoreHandler} height={320} loading={movies.loading} />
     </SafeAreaView>
 }

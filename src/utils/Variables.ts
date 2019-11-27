@@ -1,4 +1,5 @@
 export const Variables = {
+    colorPrimary: '#101f47',
     bodyBackgroundColor: '#fafafc',
     movieTitleFontSize: 15,
     movieTitleColor: '#000',

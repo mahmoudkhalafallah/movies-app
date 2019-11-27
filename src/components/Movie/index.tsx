@@ -5,6 +5,7 @@ import { MovieImage } from "./movie-image";
 import { MovieRating } from "./movie-rating";
 import styled from "styled-components/native";
 import { StyledText } from "../Text";
+import { IMAGE_URI_PREFIX } from "../../utils/Constants";
 
 const MovieContainer = styled.View`
 flex-direction: ${({ horizontal }: any) => horizontal ? 'column' : 'row'};
@@ -38,7 +39,7 @@ margin-top: 5;
 export const Movie: React.FC<any> = ({ title, poster_path, vote_average, overview,
     release_date, isFirst, isLast, horizontal }: any) => {
     return <MovieContainer isFirst={isFirst} isLast={isLast} horizontal={horizontal}>
-        <MovieImage src={poster_path} horizontal={horizontal}></MovieImage>
+        <MovieImage src={horizontal ? poster_path : `${IMAGE_URI_PREFIX}${poster_path}`} horizontal={horizontal}></MovieImage>
         <MovieDetails horizontal={horizontal}>
             <MovieTitle ellipsizeMode='tail' numberOfLines={1}>{title}</MovieTitle>
             {(vote_average != undefined) && <MovieRating rating={vote_average} horizontal={horizontal} />}
