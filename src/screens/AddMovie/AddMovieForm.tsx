@@ -48,7 +48,7 @@ const FormHeader = styled(StyledText)`
 const PosterPreview = styled(Image)`
 	width: 100%;
 	height: 250px;
-	marginvertical: 15px;
+	margin-vertical: 15px;
 `
 
 export const AddMovieForm: React.FC<{
