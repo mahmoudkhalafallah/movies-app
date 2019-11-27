@@ -7,22 +7,22 @@ import { MoviesSection } from "./components/MoviesSection";
 import { AddMovieModal } from "./screens/AddMovie/AddMovieModal"
 
 const MyApp: React.FC = () => {
-    const [movies, setMovies]: [{data:IMovie[], loading: boolean}, Dispatch<SetStateAction<any>>] = useState({data: [], loading: false})
+    const [movies, setMovies]: [{ data: IMovie[], loading: boolean }, Dispatch<SetStateAction<any>>] = useState({ data: [], loading: false })
     const [moviesPg, setMoviesPg]: [number, Dispatch<SetStateAction<any>>] = useState(1)
 
     const [myMovies, setMyMovies]: [IMovie[], Dispatch<SetStateAction<any>>] = useState([])
 
     useEffect(() => {
         Api.get('discover/movie', { page: moviesPg }).then((res: AxiosResponse<{ results: IMovie[] }>) => {
-            setMovies({data: [...movies.data, ...res.data.results], loading: false});
+            setMovies({ data: [...movies.data, ...res.data.results], loading: false });
         }, err => {
-            setMovies({data: movies.data, loading: false});
+            setMovies({ data: movies.data, loading: false });
         })
     }, [moviesPg])
 
     const allMoviesLoadMoreHandler = (info: any) => {
-        if(!movies.loading) {
-            setMovies({data: movies.data, loading: true});
+        if (!movies.loading) {
+            setMovies({ data: movies.data, loading: true });
             setMoviesPg(moviesPg + 1)
         }
     }
@@ -33,8 +33,8 @@ const MyApp: React.FC = () => {
     }
 
     return <SafeAreaView>
-        <MoviesSection title='My Movies' items={myMovies} horizontal={true} height={150} AddMovieModal={() => <AddMovieModal onSubmit={addMovie} />} />
-        <MoviesSection title='All Movies' items={movies.data} loadMoreHandler={allMoviesLoadMoreHandler} height={320} loading={movies.loading} />
+        <MoviesSection items={myMovies} isMyMovie={true} AddMovieModal={() => <AddMovieModal onSubmit={addMovie} />} />
+        <MoviesSection items={movies.data} loadMoreHandler={allMoviesLoadMoreHandler} loading={movies.loading} />
     </SafeAreaView>
 }
 

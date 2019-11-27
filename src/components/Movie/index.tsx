@@ -8,21 +8,20 @@ import { StyledText } from "../Text";
 import { IMAGE_URI_PREFIX } from "../../utils/Constants";
 
 const MovieContainer = styled.View`
-flex-direction: ${({ horizontal }: any) => horizontal ? 'column' : 'row'};
+flex-direction: ${({ isMyMovie }: any) => isMyMovie ? 'column' : 'row'};
 justify-content: space-between;
-align-items: ${({ horizontal }: any) => horizontal ? 'center' : 'flex-start'};
+align-items: ${({ isMyMovie }: any) => isMyMovie ? 'center' : 'flex-start'};
 width: 100;
 margin-top: 10;
 margin-bottom: 10;
-${({ horizontal, isFirst }: any) => (horizontal && isFirst) ? 'margin-left: 25' : 'margin-left: 10'}
-${({ horizontal, isLast }: any) => (horizontal && isLast) ? 'margin-right: 20' : 'margin-right: 10'}
-${({ horizontal }: any) => (!horizontal) && 'margin-left: 20'}
-${({ horizontal, isLast }: any) => (!horizontal && isLast) && 'padding-bottom: 80'}
+${({ isMyMovie, isFirst }: any) => (isMyMovie && isFirst) ? 'margin-left: 25' : 'margin-left: 10'}
+${({ isMyMovie, isLast }: any) => (isMyMovie && isLast) ? 'margin-right: 20' : 'margin-right: 10'}
+${({ isMyMovie }: any) => (!isMyMovie) && 'margin-left: 20'}
+${({ isMyMovie, isLast }: any) => (!isMyMovie && isLast) && 'padding-bottom: 80'}
 `
 
 const MovieDetails = styled.View`
 flex-direction: column;
-width: ${({ horizontal }: any) => horizontal ? '100' : '150'};
 `
 
 const MovieOverview = styled(StyledText)`
@@ -37,13 +36,13 @@ margin-top: 5;
 `
 
 export const Movie: React.FC<any> = ({ title, poster_path, vote_average, overview,
-    release_date, isFirst, isLast, horizontal }: any) => {
-    return <MovieContainer isFirst={isFirst} isLast={isLast} horizontal={horizontal}>
-        <MovieImage src={horizontal ? poster_path : `${IMAGE_URI_PREFIX}${poster_path}`} horizontal={horizontal}></MovieImage>
-        <MovieDetails horizontal={horizontal}>
+    release_date, isFirst, isLast, isMyMovie }: any) => {
+    return <MovieContainer isFirst={isFirst} isLast={isLast} isMyMovie={isMyMovie}>
+        <MovieImage src={isMyMovie ? poster_path : `${IMAGE_URI_PREFIX}${poster_path}`} isMyMovie={isMyMovie}></MovieImage>
+        <MovieDetails style={{width: isMyMovie ? 100 : 150}}>
             <MovieTitle ellipsizeMode='tail' numberOfLines={1}>{title}</MovieTitle>
-            {(vote_average != undefined) && <MovieRating rating={vote_average} horizontal={horizontal} />}
-            {!horizontal && <>
+            {(vote_average != undefined) && <MovieRating rating={vote_average} showRatingValue={isMyMovie} />}
+            {!isMyMovie && <>
                 <MovieDate>{release_date}</MovieDate>
                 <MovieOverview ellipsizeMode='tail' numberOfLines={6}>{overview}</MovieOverview>
             </>}

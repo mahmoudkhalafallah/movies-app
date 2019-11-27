@@ -4,7 +4,6 @@ import { Variables } from "../../utils/Variables";
 import styled from "styled-components/native";
 import { StyledText } from "../Text";
 
-
 const RatingContainer = styled.View`
 flex-direction: row;
 align-items: center;
@@ -15,7 +14,7 @@ font-size: 10;
 color: #bbb;
 `
 
-export const MovieRating: React.FC<{ rating: number, horizontal: boolean }> = ({ rating, horizontal }) => {
+export const MovieRating: React.FC<{ rating: number, showRatingValue: boolean }> = ({ rating, showRatingValue = true }) => {
 
     const ratingPerFiveStars = (rating / 10) * 5
     return <RatingContainer>
@@ -29,6 +28,6 @@ export const MovieRating: React.FC<{ rating: number, horizontal: boolean }> = ({
         allowHalves={true}
         swipeable={false}
     />
-        {(!horizontal) && <RatingValue>{rating}/10</RatingValue>}
+        {(!showRatingValue) && <RatingValue>{rating}/10</RatingValue>}
     </RatingContainer>
 }
