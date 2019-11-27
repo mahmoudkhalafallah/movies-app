@@ -13,7 +13,7 @@ border-bottom-left-radius: 10;
 border-bottom-right-radius: 10;
 `
 
-export const MovieImage: React.FC<{ isMyMovie: string, src?: string }> = ({ isMyMovie, src }) => {
+export const MovieImage: React.FC<{ src?: string, isMyMovie?: boolean }> = ({ src, isMyMovie = false }) => {
 
     const [err, setErr] = useState(false)
     const source = (!err && src) ? { uri: src } : imagePlaceholder
